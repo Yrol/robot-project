@@ -23,11 +23,14 @@ class Robot
             die();
         }
 
-        $this->x = $x;
-        $this->y = $y;
-        $this->face = $face;
+        //max height and width will ensure that robot won't be allowed place out of the defined boundaries
+        if ($this->board->getMaxHeight() >= $y && $this->board->getMaxWidth() >= $x) {
+            $this->x = $x;
+            $this->y = $y;
+            $this->face = $face;
 
-        $this->onBoard = true;
+            $this->onBoard = true;
+        }
     }
 
     public function move(): void
@@ -42,25 +45,25 @@ class Robot
                 if ($this->board->getMaxHeight() === $this->y) {
                     return;
                 }
-                $this->y += 1;
+                $this->y++;
                 break;
             case Directions::SOUTH:
                 if ($this->y === 0) {
                     return;
                 }
-                $this->y -= 1;
+                $this->y--;
                 break;
             case Directions::EAST:
                 if ($this->board->getMaxWidth() === $this->x) {
                     return;
                 }
-                $this->x += 1;
+                $this->x++;
                 break;
             case Directions::WEST:
                 if ($this->x === 0) {
                     return;
                 }
-                $this->x -= 1;
+                $this->x--;
                 break;
         }
     }

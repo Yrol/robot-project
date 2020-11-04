@@ -18,7 +18,7 @@ class Board
      */
     public function getMaxHeight(): int
     {
-        return $this->maxHeight - 1;
+        return $this->maxHeight;
     }
 
     /**
@@ -26,6 +26,6 @@ class Board
      */
     public function getMaxWidth(): int
     {
-        return $this->maxWidth - 1;
+        return $this->maxWidth;
     }
 }
