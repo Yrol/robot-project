@@ -11,11 +11,17 @@ class Board
         $this->maxHeight = $h;
     }
 
+    /**
+     * -1 to prevent robot from falling off
+     */
     public function getMaxHeight(): int
     {
         return $this->maxHeight - 1;
     }
 
+    /**
+     * -1 to prevent robot from falling off
+     */
     public function getMaxWidth(): int
     {
         return $this->maxWidth - 1;
