@@ -2,7 +2,9 @@
 
 namespace App\CustomClasses;
 
-class Robot
+use App\Interfaces\RobotInterface;
+
+class Robot implements RobotInterface
 {
     private $x;
     private $y;
@@ -42,7 +44,7 @@ class Robot
 
         switch ($this->face) {
             case Directions::NORTH:
-                if ($this->board->getMaxHeight() === $this->y) {
+                if ($this->board->getMaxHeight() === $this->y) {// prevent falling off y
                     return;
                 }
                 $this->y++;
@@ -54,7 +56,7 @@ class Robot
                 $this->y--;
                 break;
             case Directions::EAST:
-                if ($this->board->getMaxWidth() === $this->x) {
+                if ($this->board->getMaxWidth() === $this->x) {// prevent falling off x
                     return;
                 }
                 $this->x++;
