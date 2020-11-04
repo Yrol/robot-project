@@ -1,4 +1,6 @@
-<?php namespace App\CustomClasses;
+<?php
+
+namespace App\CustomClasses;
 
 class Board
 {

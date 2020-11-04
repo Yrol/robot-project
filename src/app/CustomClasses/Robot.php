@@ -1,4 +1,6 @@
-<?php namespace App\CustomClasses;
+<?php
+
+namespace App\CustomClasses;
 
 class Robot
 {
@@ -7,11 +9,6 @@ class Robot
     private $board;
     private $face;
     private $onBoard = false;
-
-    private const NORTH = 'NORTH';
-    private const SOUTH = 'SOUTH';
-    private const EAST = 'EAST';
-    private const WEST = 'WEST';
 
     public function __construct(int $x, int $y, string $face, Board $board)
     {
@@ -41,25 +38,25 @@ class Robot
         }
 
         switch ($this->face) {
-            case self::NORTH:
+            case Directions::NORTH:
                 if ($this->board->getMaxHeight() === $this->y) {
                     return;
                 }
                 $this->y += 1;
                 break;
-            case self::SOUTH:
+            case Directions::SOUTH:
                 if ($this->y === 0) {
                     return;
                 }
                 $this->y -= 1;
                 break;
-            case self::EAST:
+            case Directions::EAST:
                 if ($this->board->getMaxWidth() === $this->x) {
                     return;
                 }
                 $this->x += 1;
                 break;
-            case self::WEST:
+            case Directions::WEST:
                 if ($this->x === 0) {
                     return;
                 }
@@ -76,35 +73,35 @@ class Robot
         }
 
         //left rotation
-        if ($direction === 'LEFT') {
+        if ($direction === Directions::LEFT) {
             switch ($this->face) {
-                case self::NORTH:
-                    $this->face = self::WEST;
+                case Directions::NORTH:
+                    $this->face = Directions::WEST;
                     break;
-                case self::EAST:
-                    $this->face = self::NORTH;
+                case Directions::EAST:
+                    $this->face = Directions::NORTH;
                     break;
-                case self::SOUTH:
-                    $this->face = self::EAST;
+                case Directions::SOUTH:
+                    $this->face = Directions::EAST;
                     break;
                 default:
-                    $this->face = self::SOUTH;
+                    $this->face = Directions::SOUTH;
                     break;
             }
         } else {
             // right rotation
             switch ($this->face) {
-                case self::NORTH:
-                    $this->face = self::EAST;
+                case Directions::NORTH:
+                    $this->face = Directions::EAST;
                     break;
-                case self::SOUTH:
-                    $this->face = self::WEST;
+                case Directions::SOUTH:
+                    $this->face = Directions::WEST;
                     break;
-                case self::WEST:
-                    $this->face = self::NORTH;
+                case Directions::WEST:
+                    $this->face = Directions::NORTH;
                     break;
                 default:
-                    $this->face = self::SOUTH;
+                    $this->face = Directions::SOUTH;
                     break;
             }
         }
