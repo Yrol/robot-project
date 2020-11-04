@@ -6,11 +6,12 @@ class Robot
     private $y;
     private $board;
     private $face;
+    private $onBoard = false;
 
-    public const NORTH = 'NORTH';
-    public const SOUTH = 'SOUTH';
-    public const EAST = 'EAST';
-    public const WEST = 'WEST';
+    private const NORTH = 'NORTH';
+    private const SOUTH = 'SOUTH';
+    private const EAST = 'EAST';
+    private const WEST = 'WEST';
 
     public function __construct(int $x, int $y, string $face, Board $board)
     {
@@ -20,13 +21,25 @@ class Robot
 
     public function place(int $x, int $y, string $face): void
     {
+        if ($this->isOnBoard()) {
+            echo "Robot is already in place";
+            die();
+        }
+
         $this->x = $x;
         $this->y = $y;
         $this->face = $face;
+
+        $this->onBoard = true;
     }
 
     public function move(): void
     {
+        if (!$this->isOnBoard()) {
+            echo "Could not find the Robot";
+            die();
+        }
+
         switch ($this->face) {
             case self::NORTH:
                 if ($this->board->getMaxHeight() === $this->y) {
@@ -57,6 +70,11 @@ class Robot
 
     public function rotate(string $direction): void
     {
+        if (!$this->isOnBoard()) {
+            echo "Could not find the Robot";
+            die();
+        }
+
         //left rotation
         if ($direction === 'LEFT') {
             switch ($this->face) {
@@ -96,5 +114,10 @@ class Robot
     public function report(): string
     {
         return "$this->x,$this->y,$this->face";
+    }
+
+    private function isOnBoard(): bool
+    {
+        return $this->onBoard;
     }
 }
