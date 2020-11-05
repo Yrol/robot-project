@@ -10,4 +10,5 @@ class Directions
     public const WEST = 'WEST';
 
     public const LEFT = 'LEFT';
+    public const RIGHT = 'RIGHT';
 }
