@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\CustomClasses\Direction;
 use App\CustomClasses\Robot;
 use App\CustomClasses\Board;
 use App\CustomClasses\Commands;
@@ -69,7 +68,7 @@ class MoveRobotCommand extends Command
                             $robot->rotate(Directions::LEFT);
                             break;
                         case Commands::REPORT:
-                            $this->info($robot->report());
+                            $this->line($robot->report());
                             break;
                     }
                 }

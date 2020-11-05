@@ -11,7 +11,7 @@ class InputFileHelper
     //Regex to find occurrences - place,north,south,east or west
     public const DIRECTION_REGEX = '/^place [\d]+,[\d]+,(north|south|east|west)$/i';
 
-    public static function readInputFileInstructions(string $file = 'Input/input.txt'): array
+    public static function readInputFileInstructions(string $file = 'Inputs/input1.txt'): array
     {
         $commands = [];
         $contents = File::get(app_path($file));
