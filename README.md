@@ -15,10 +15,10 @@ sudo chmod +x ./deploy-local
 
 ```
 
-- Application run script
+- Test run script
 
 ```sh
-sudo chmod +x ./deploy-local
+sudo chmod +x ./robot-test
 ```
 
 - Down script
