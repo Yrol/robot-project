@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ "$1" == "test" ]; then
-  docker exec -it php bash -c "php application test"
-elif [ "$1" == "move-robot" ] && [ -n "$2" ]; then
-  docker exec php bash -c "php application move-robot $2"
+  docker exec -it php bash -c "php artisan test"
+elif [ "$1" == "move-robot" ] && [ -n "$2" ]; then #move-robot is the command in "src/app/Console/Commands/MoveRobotCommand.php" which read the input text file referenced in the argument (i.e. $2)
+  docker exec php bash -c "php artisan move-robot $2"
 elif [ "$1" == "move-robot" ]; then
-  docker exec php bash -c "php application move-robot"
+  docker exec php bash -c "php artisan move-robot" #run the defualt test defined within "move-robot" command
 fi
 
